@@ -3,7 +3,7 @@
 $localhost = "127.0.0.1";
 $username = "root";
 $password = "";
-$dbname = "";
+$dbname = "cr11_petadoption_gregor";
 
 // create connection
 $connect = new  mysqli($localhost, $username, $password, $dbname);

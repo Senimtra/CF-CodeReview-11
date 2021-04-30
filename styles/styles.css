@@ -1,0 +1,9 @@
+#heroImg {
+  border-radius: calc(0.2vw + 0.2vh + 0.1vmin);
+  background-image: url("../images/heroImg.png");
+  padding-bottom: 30%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+/*# sourceMappingURL=styles.css.map */

@@ -1,6 +1,5 @@
 <?php
 session_start();
-include_once 'header.php';
 require_once 'components/db_connect.php';
 
 // it will never let you open index(login) page if session is set
@@ -76,14 +75,11 @@ $connect->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Registration System</title>
     <?php require_once 'components/boot.php' ?>
-    <style>
-        body {
-            background-color: #454545;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css">
 </head>
 
 <body>
+    <?php include_once 'header.php' ?>;
     <div class="container">
         <form class="w-75" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
             <h2>LogIn</h2>
