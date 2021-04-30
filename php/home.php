@@ -69,14 +69,6 @@ $connect->close();
 <body>
     <?php include_once 'header.php' ?>;
     <?php include_once 'navbar.php' ?>;
-    <div class="container content">
-        <div class="hero">
-            <!-- <img class="userImage" src="pictures/<?php echo $row['picture']; ?>" alt="<?php echo $row['first_name']; ?>">
-            <p class="text-white">Hi <?php echo $row['first_name']; ?></p> -->
-        </div>
-        <a href="logout.php?logout">Sign Out</a>
-        <a href="update.php?id=<?php echo $_SESSION['user'] ?>">Update your profile</a>
-    </div>
     <div>
         <p class='h2'>Our Pets</p>
         <table class='table table-striped bg-secondary'>
