@@ -12,13 +12,14 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     exit;
 }
 
-$suppliers = "";
-$result = mysqli_query($connect, "SELECT * FROM supplier");
+// $suppliers = "";
+// $result = mysqli_query($connect, "SELECT * FROM supplier");
 
-while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-    $suppliers .=
-        "<option value='{$row['supplierId']}'>{$row['sup_name']}</option>";
-}
+// while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+//     $suppliers .=
+//         "<option value='{$row['supplierId']}'>{$row['sup_name']}</option>";
+// }
+// 
 ?>
 
 <!DOCTYPE html>
@@ -27,55 +28,67 @@ while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Pet</title>
     <?php require_once '../components/boot.php' ?>
-    <title>PHP CRUD | Add Product</title>
-    <style>
-        fieldset {
-            margin: auto;
-            margin-top: 100px;
-            width: 60%;
-        }
-
-        body {
-            background-color: #454545;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../../styles/styles.css">
 </head>
 
 <body>
-    <fieldset>
-        <legend class='h2'>Add Product</legend>
-        <form action="actions/a_create.php" method="post" enctype="multipart/form-data">
-            <table class='table'>
-                <tr>
-                    <th>Name</th>
-                    <td><input class='form-control' type="text" name="name" placeholder="Product Name" /></td>
-                </tr>
-                <tr>
-                    <th>Price</th>
-                    <td><input class='form-control' type="number" name="price" placeholder="Price" step="any" /></td>
-                </tr>
-                <tr>
-                    <th>Picture</th>
-                    <td><input class='form-control' type="file" name="picture" /></td>
-                </tr>
-                <tr>
-
-                    <th>Supplier</th>
-                    <td>
-                        <select class="form-select" name="supplier" aria-label="Default select example">
-                            <?php echo $suppliers; ?>
-                            <option selected value='none'>Undefined</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><button class='btn btn-success' type="submit">Insert Product</button></td>
-                    <td><a href="index.php"><button class='btn btn-warning' type="button">Home</button></a></td>
-                </tr>
-            </table>
-        </form>
-    </fieldset>
+    <?php include_once '../header.php' ?>;
+    <?php include_once 'navbar_adm_a.php' ?>;
+    <div class="container content">
+        <fieldset>
+            <legend class='h2'>Add Pet</legend>
+            <form action="actions/a_create.php" method="post">
+                <table class='table'>
+                    <tr>
+                        <th>Name</th>
+                        <td><input class="form-control" type="text" name="name" placeholder="Pet Name" /></td>
+                    </tr>
+                    <tr>
+                        <th>Breed</th>
+                        <td><input class="form-control" type="text" name="breed" placeholder="Breed Name" /></td>
+                    </tr>
+                    <tr>
+                        <th>Size</th>
+                        <td><input class="form-control" type="text" name="size" placeholder="Pet Size" /></td>
+                    </tr>
+                    <tr>
+                        <th>Age</th>
+                        <td><input class="form-control" type="number" name="age" step="any" placeholder="Age" /></td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td><input class="form-control" type="text" name="description" placeholder="Description" /></td>
+                    </tr>
+                    <tr>
+                        <th>Hobbies</th>
+                        <td><input class="form-control" type="text" name="hobbies" placeholder="Hobbies" /></td>
+                    </tr>
+                    <tr>
+                        <th>ZIP-code</th>
+                        <td><input class="form-control" type="number" name="loc_zip" step="any" placeholder="ZIP-code" /></td>
+                    </tr>
+                    <tr>
+                        <th>City</th>
+                        <td><input class="form-control" type="text" name="loc_city" placeholder="City" /></td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td><input class="form-control" type="text" name="loc_address" placeholder="Address" /></td>
+                    </tr>
+                    <tr>
+                        <th>Picture</th>
+                        <td><input class="form-control" type="text" name="image" placeholder="Image-Url" /></td>
+                    </tr>
+                    <tr>
+                        <td><button class='btn btn-success' type="submit">Insert Pet</button></td>
+                        <td><a href="../dashBoard.php"><button class='btn btn-warning' type="button">Home</button></a></td>
+                    </tr>
+                </table>
+            </form>
+        </fieldset>
+    </div>
 </body>
 
 </html>

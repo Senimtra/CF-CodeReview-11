@@ -114,9 +114,6 @@ if ($_GET['id']) {
                         <th>Picture</th>
                         <td><input class="form-control" type="text" name="image" placeholder="Image-Url" value="<?php echo $image ?>" /></td>
                     </tr>
-
-                    <tr>
-                    </tr>
                     <tr>
                         <input type="hidden" name="id" value="<?php echo $data['id'] ?>" />
                         <input type="hidden" name="picture" value="<?php echo $data['image'] ?>" />
