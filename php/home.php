@@ -18,7 +18,6 @@ $res = mysqli_query($connect, "SELECT * FROM user WHERE id=" . $_SESSION['user']
 $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
 
-
 $sql = "SELECT * FROM pets";
 $result = mysqli_query($connect, $sql);
 $tbody = '';

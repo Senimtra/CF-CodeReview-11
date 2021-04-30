@@ -25,6 +25,8 @@ if (mysqli_num_rows($result)  > 0) {
         <td>$row[age]</td>
         <td>$row[description]<br>$row[hobbies]</td>
         <td>$row[loc_address]<br>$row[loc_zip]&nbsp;$row[loc_city]</td>
+        <td><a href='products/update.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Edit</button></a>
+        <a href='products/delete.php?id=" . $row['id'] . "'><button class='btn btn-danger btn-sm' type='button'>Delete</button></a></td>
         </tr>";
     };
 } else {
@@ -49,11 +51,6 @@ $connect->close();
 <body>
     <?php include_once 'header.php' ?>;
     <?php include_once 'navbar_adm.php' ?>;
-    <div class="container content">
-        <!-- <img class="userImage" src="pictures/admavatar.png" alt="Adm avatar"> -->
-        <!-- <p class="">Administrator</p> -->
-        <a href="logout.php?logout">Sign Out</a>
-    </div>
     <div>
         <p class='h2'>Our Pets</p>
         <table class='table table-striped bg-secondary'>
@@ -65,6 +62,7 @@ $connect->close();
                     <th>Age</th>
                     <th>Details</th>
                     <th>Address</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
