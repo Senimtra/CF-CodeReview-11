@@ -13,18 +13,18 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     exit;
 }
 
-$sql = "SELECT * FROM products";
+$sql = "SELECT * FROM pets";
 $result = mysqli_query($connect, $sql);
 $tbody = ''; //this variable will hold the body for the table
 if (mysqli_num_rows($result)  > 0) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $tbody .= "<tr>
-            <td><img class='img-thumbnail' src='pictures/" . $row['picture'] . "'</td>
-            <td>" . $row['name'] . "</td>
-            <td>" . $row['price'] . "</td>
-            <td><a href='update.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Edit</button></a>
-            <a href='delete.php?id=" . $row['id'] . "'><button class='btn btn-danger btn-sm' type='button'>Delete</button></a></td>
-            </tr>";
+        // $tbody .= "<tr>
+        //     <td><img class='img-thumbnail' src='pictures/" . $row['picture'] . "'</td>
+        //     <td>" . $row['name'] . "</td>
+        //     <td>" . $row['price'] . "</td>
+        //     <td><a href='update.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Edit</button></a>
+        //     <a href='delete.php?id=" . $row['id'] . "'><button class='btn btn-danger btn-sm' type='button'>Delete</button></a></td>
+        //     </tr>";
     };
 } else {
     $tbody =  "<tr><td colspan='5'><center>No Data Available </center></td></tr>";
