@@ -68,7 +68,7 @@ if ($_GET['id']) {
 
 <body>
     <?php include_once '../header.php' ?>;
-    <?php include_once '../navbar_adm.php' ?>;
+    <?php include_once 'navbar_adm_a.php' ?>;
     <div class="container content">
         <fieldset>
             <legend class='h2'>Update request <img src='<?php echo $image ?>' alt="<?php echo $name ?>">#<?php echo $id ?></legend>
@@ -118,7 +118,7 @@ if ($_GET['id']) {
                     <tr>
                     </tr>
                     <tr>
-                        <input type=" hidden" name="id" value="<?php echo $data['id'] ?>" />
+                        <input type="hidden" name="id" value="<?php echo $data['id'] ?>" />
                         <input type="hidden" name="picture" value="<?php echo $data['image'] ?>" />
                         <td><button class="btn btn-success" type="submit">Save Changes</button></td>
                         <td><a href="../dashBoard.php"><button class="btn btn-warning" type="button">Back</button></a></td>

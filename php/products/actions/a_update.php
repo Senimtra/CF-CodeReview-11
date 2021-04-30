@@ -12,31 +12,31 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
 }
 
 require_once '../../components/db_connect.php';
-require_once '../../components/file_upload.php';
+// require_once '../../components/file_upload.php';
 
 if ($_POST) {
-    $name = $_POST['name'];
-    $price = $_POST['price'];
-    // $supplier = $_POST['supplier'];
     $id = $_POST['id'];
-    //variable for upload pictures errors is initialized
-    $uploadError = '';
+    $name = $_POST['name'];
+    $breed = $_POST['breed'];
+    $size = $_POST['size'];
+    $age = $_POST['age'];
+    $description = $_POST['description'];
+    $hobbies = $_POST['hobbies'];
+    $loc_zip = $_POST['loc_zip'];
+    $loc_city = $_POST['loc_city'];
+    $loc_address = $_POST['loc_address'];
+    $image = $_POST['image'];
 
-    $picture = file_upload($_FILES['picture'], "product"); //file_upload() called  
-    if ($picture->error === 0) {
-        ($_POST["picture"] == "product.png") ?: unlink("../pictures/$_POST[picture]");
-        $sql = "UPDATE products SET name = '$name', price = $price, picture = '$picture->fileName', fk_supplierId = $supplier WHERE id = {$id}";
-    } else {
-        $sql = "UPDATE products SET name = '$name', price = $price, fk_supplierId = $supplier WHERE id = {$id}";
-    }
+    // ### Update record ###
+
+    $sql = "UPDATE pets SET name = '$name', breed = '$breed', size = '$size', age = '$age', description = '$description', hobbies = '$hobbies', loc_zip = '$loc_zip', loc_city = '$loc_city', loc_address = '$loc_address', image = '$image' WHERE id = {$id}";
+
     if ($connect->query($sql) === TRUE) {
         $class = "success";
         $message = "The record was successfully updated";
-        $uploadError = ($picture->error != 0) ? $picture->ErrorMessage : '';
     } else {
         $class = "danger";
         $message = "Error while updating record : <br>" . $connect->error;
-        $uploadError = ($picture->error != 0) ? $picture->ErrorMessage : '';
     }
     $connect->close();
 } else {
@@ -51,10 +51,13 @@ if ($_POST) {
     <meta charset="UTF-8">
     <title>Update</title>
     <?php require_once '../../components/boot.php' ?>
+    <link rel="stylesheet" type="text/css" href="../../../styles/styles.css">
 </head>
 
 <body>
-    <div class="container">
+    <?php include_once '../../header.php' ?>;
+    <?php include_once 'navbar_adm_b.php' ?>;
+    <div class="container content">
         <div class="mt-3 mb-3">
             <h1>Update request response</h1>
         </div>
@@ -62,7 +65,7 @@ if ($_POST) {
             <p><?php echo ($message) ?? ''; ?></p>
             <p><?php echo ($uploadError) ?? ''; ?></p>
             <a href='../update.php?id=<?= $id; ?>'><button class="btn btn-warning" type='button'>Back</button></a>
-            <a href='../index.php'><button class="btn btn-success" type='button'>Home</button></a>
+            <a href='../../dashBoard.php'><button class="btn btn-success" type='button'>Home</button></a>
         </div>
     </div>
 </body>
