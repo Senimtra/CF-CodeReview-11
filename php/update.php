@@ -93,30 +93,19 @@ $connect->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
     <?php require_once 'components/boot.php' ?>
-    <style type="text/css">
-        fieldset {
-            margin: auto;
-            margin-top: 100px;
-            width: 60%;
-        }
-
-        .img-thumbnail {
-            width: 70px !important;
-            height: 70px !important;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css">
 </head>
 
 <body>
     <?php include_once 'header.php' ?>;
     <?php include_once 'navbar.php' ?>;
-    <div class="container">
+    <div class="container content">
         <div class="<?php echo $class; ?>" role="alert">
             <p><?php echo ($message) ?? ''; ?></p>
             <p><?php echo ($uploadError) ?? ''; ?></p>
         </div>
         <h2>Update</h2>
-        <img class='img-thumbnail rounded-circle' src='pictures/<?php echo $data['picture'] ?>' alt="<?php echo $f_name ?>">
+        <img src='pictures/<?php echo $data['picture'] ?>' alt="<?php echo $f_name ?>">
         <form method="post" enctype="multipart/form-data">
             <table class="table">
                 <tr>

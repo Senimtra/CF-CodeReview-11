@@ -16,6 +16,10 @@ body {
   background-color: darkgrey;
 }
 
+.content img {
+  height: 10vh;
+}
+
 img {
   height: 10vh;
 }
