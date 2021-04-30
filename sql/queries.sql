@@ -48,14 +48,18 @@ INSERT INTO `pets` (`name`, `breed`, `size`, `age`, `description`, `hobbies`, `l
 ('Murdoc', 'Chameleon', 'small', 4, 'Only for people with a lot of experience with terrariums.', 'Likes to climb very much and all day long. Needs a humid environment and a lot of fresh air from outside.', 47408, 'Bloomington', '3838 Conaway Street', 'http://shallow.codes/images_CR11/pet_30.jpg')
 ;
 
-CREATE  TABLE `cr11_petadoption_gregor`.`user` (
-`id`   INT(11) NOT NULL  AUTO_INCREMENT,
-`first_name` VARCHAR(255) NOT  NULL ,
-`last_name` VARCHAR(255 ) NOT  NULL,
-`password` VARCHAR  ( 255) NOT NULL,
-`date_of_birth`   DATE NOT  NULL,
-`email`   VARCHAR(255) NOT  NULL ,
-`picture` VARCHAR(255) NULL ,
-`status` VARCHAR(4) NOT   NULL DEFAULT 'user' ,
-PRIMARY KEY (`id`)
-) ENGINE=InnoDB   DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
+CREATE TABLE `cr11_petadoption_gregor`.`adoptions` (
+`id` INT(11) NOT NULL AUTO_INCREMENT,
+`fk_petId` INT(11),
+`name` VARCHAR(20),
+`breed` VARCHAR(20),
+`fk_userId` INT(11),
+`image` VARCHAR(255),
+`adopt_date` TIMESTAMP,
+PRIMARY KEY (`id`),
+FOREIGN KEY (fk_userId) REFERENCES user(id),
+FOREIGN KEY (fk_petId) REFERENCES pets(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1;
+
+
+

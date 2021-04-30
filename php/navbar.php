@@ -7,6 +7,7 @@
             <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                 <a class="nav-link" href="senior.php">Seniors</a>
+                <a class="nav-link" href="adoptions.php">Adoptions</a>
                 <a class="nav-link" href="update.php?id=<?php echo $_SESSION['user'] ?>">Profile</a>
                 <a class="nav-link" href="logout.php?logout">Sign out</a>
             </div>

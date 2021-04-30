@@ -17,24 +17,15 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
 $res = mysqli_query($connect, "SELECT * FROM user WHERE id=" . $_SESSION['user']);
 $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
-// add adoption
-if (isset($_POST['submit'])) {
-    $userID = $_SESSION['user'];
-    $petID = $_POST['id'];
-    $image = $_POST['image'];
-    $breed = $_POST['breed'];
-    $name = $_POST['name'];
-    $sql = "INSERT INTO adoptions (fk_petId, name, breed, fk_userId, image) VALUES ('$petID', '$name', '$breed', '$userID', '$image')";
-    if ($connect->query($sql) === TRUE) {
-        header("Location: adoptions.php");
-    } else {
-        $class = "danger";
-        $message = "The adoption was not registered due to:" . $sql . "<br>" . $connect->error;
-    };
+// cancel adoption
+if (isset($_POST['cancel'])) {
+    $id = $_POST['id'];
+    $sql = "DELETE FROM adoptions WHERE id = $id";
+    mysqli_query($connect, $sql);
 }
 
 
-$sql = "SELECT * FROM pets";
+$sql = "SELECT * FROM adoptions";
 $result = mysqli_query($connect, $sql);
 $tbody = '';
 if (mysqli_num_rows($result)  > 0) {
@@ -42,20 +33,15 @@ if (mysqli_num_rows($result)  > 0) {
         $tbody .= "
         <tr>
         <td><img src='$row[image]'></td>
-        <td>$row[name]<br>#$row[id]<br>$row[breed]</td>
-        <td>$row[size]</td>
-        <td>$row[age]</td>
-        <td>$row[description]<br>$row[hobbies]</td>
-        <td>$row[loc_address]<br>$row[loc_zip]&nbsp;$row[loc_city]</td>
-       <td>
-        <form action='home.php' method='post'>
-            <input type ='hidden' name='id' class='form-control' value='" . $row['id'] . "'/>
-            <input type ='hidden' name='image' class='form-control' value='" . $row['image'] . "'/>
-            <input type ='hidden' name='breed' class='form-control' value='" . $row['breed'] . "'/>
-            <input type ='hidden' name='name' class='form-control' value='" . $row['name'] . "'/>
-            <button class='btn btn-success btn-sm' name='submit' type='submit'>Adopt</button>
-        </form>
-    </td>
+        <td>$row[name]</td>
+        <td>$row[breed]</td>
+        <td>$row[fk_userId]</td>
+        <td>$row[adopt_date]</td>
+        <td>
+        <form action='adoptions.php' method='post'>
+        <input type ='hidden' name='id' class='form-control' value='" . $row['id'] . "'/>
+        <button class='btn btn-danger btn-sm' name='cancel' type='submit'>Delete</button>
+        </form></td>
     </tr>";
     };
 } else {
@@ -98,10 +84,9 @@ $connect->close();
                 <tr>
                     <th>Picture</th>
                     <th>Name</th>
-                    <th>Size</th>
-                    <th>Age</th>
-                    <th>Details</th>
-                    <th>Address</th>
+                    <th>Breed</th>
+                    <th>User-ID</th>
+                    <th>Adoption Date</th>
                     <th></th>
                 </tr>
             </thead>
