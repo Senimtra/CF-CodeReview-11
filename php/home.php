@@ -34,7 +34,9 @@ if (isset($_POST['submit'])) {
 }
 
 
-$sql = "SELECT * FROM pets";
+// ### Selecting every pet that is not yet adopted ###
+
+$sql = "SELECT * FROM pets WHERE id NOT IN (SELECT fk_petId FROM adoptions)";
 $result = mysqli_query($connect, $sql);
 $tbody = '';
 if (mysqli_num_rows($result)  > 0) {

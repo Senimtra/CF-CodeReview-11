@@ -61,5 +61,7 @@ FOREIGN KEY (fk_userId) REFERENCES user(id),
 FOREIGN KEY (fk_petId) REFERENCES pets(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1;
 
+select id from pets
+where id not in (select fk_petId from adoptions);
 
 

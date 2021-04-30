@@ -40,7 +40,7 @@ if (mysqli_num_rows($result)  > 0) {
         <td>
         <form action='adoptions.php' method='post'>
         <input type ='hidden' name='id' class='form-control' value='" . $row['id'] . "'/>
-        <button class='btn btn-danger btn-sm' name='cancel' type='submit'>Delete</button>
+        <button class='btn btn-danger btn-sm' name='cancel' type='submit'>Cancel</button>
         </form></td>
     </tr>";
     };

@@ -18,7 +18,26 @@ $res = mysqli_query($connect, "SELECT * FROM user WHERE id=" . $_SESSION['user']
 $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
 
-$sql = "SELECT * FROM pets WHERE age > 8";
+// add adoption
+if (isset($_POST['submit'])) {
+    $userID = $_SESSION['user'];
+    $petID = $_POST['id'];
+    $image = $_POST['image'];
+    $breed = $_POST['breed'];
+    $name = $_POST['name'];
+    $sql = "INSERT INTO adoptions (fk_petId, name, breed, fk_userId, image) VALUES ('$petID', '$name', '$breed', '$userID', '$image')";
+    if ($connect->query($sql) === TRUE) {
+        header("Location: adoptions.php");
+    } else {
+        $class = "danger";
+        $message = "The adoption was not registered due to:" . $sql . "<br>" . $connect->error;
+    };
+}
+
+
+// ### Selecting every senior pet that is not yet adopted ###
+
+$sql = "SELECT * FROM pets WHERE (age > 8) AND id NOT IN (SELECT fk_petId FROM adoptions)";
 $result = mysqli_query($connect, $sql);
 $tbody = '';
 if (mysqli_num_rows($result)  > 0) {
@@ -31,7 +50,16 @@ if (mysqli_num_rows($result)  > 0) {
         <td>$row[age]</td>
         <td>$row[description]<br>$row[hobbies]</td>
         <td>$row[loc_address]<br>$row[loc_zip]&nbsp;$row[loc_city]</td>
-        </tr>";
+        <td>
+        <form action='home.php' method='post'>
+            <input type ='hidden' name='id' class='form-control' value='" . $row['id'] . "'/>
+            <input type ='hidden' name='image' class='form-control' value='" . $row['image'] . "'/>
+            <input type ='hidden' name='breed' class='form-control' value='" . $row['breed'] . "'/>
+            <input type ='hidden' name='name' class='form-control' value='" . $row['name'] . "'/>
+            <button class='btn btn-success btn-sm' name='submit' type='submit'>Adopt</button>
+        </form>
+    </td>
+    </tr>";
     };
 } else {
     $tbody =  "<tr><td colspan='5'><center>No Data Available </center></td></tr>";
@@ -76,6 +104,7 @@ $connect->close();
                     <th>Age</th>
                     <th>Details</th>
                     <th>Address</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
