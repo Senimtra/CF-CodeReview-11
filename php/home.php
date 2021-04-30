@@ -68,6 +68,7 @@ $connect->close();
 
 <body>
     <?php include_once 'header.php' ?>;
+    <?php include_once 'navbar.php' ?>;
     <div class="container content">
         <div class="hero">
             <!-- <img class="userImage" src="pictures/<?php echo $row['picture']; ?>" alt="<?php echo $row['first_name']; ?>">
