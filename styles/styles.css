@@ -1,9 +1,22 @@
+body {
+  background-image: url("../images/background.jpg");
+  background-size: 100%;
+}
+
 #heroImg {
   border-radius: calc(0.2vw + 0.2vh + 0.1vmin);
   background-image: url("../images/heroImg.png");
-  padding-bottom: 30%;
+  padding-bottom: 40%;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
+}
+
+.content {
+  background-color: darkgrey;
+}
+
+img {
+  height: 10vh;
 }
 /*# sourceMappingURL=styles.css.map */

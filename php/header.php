@@ -8,7 +8,7 @@
 
                             <!-- ### Hero background image ### -->
 
-                            <div id="heroImg">djhfalkjh</div>
+                            <div id="heroImg"></div>
                         </div>
                     </div>
                 </div>

@@ -80,7 +80,7 @@ $connect->close();
 
 <body>
     <?php include_once 'header.php' ?>;
-    <div class="container">
+    <div class="container content">
         <form class="w-75" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
             <h2>LogIn</h2>
             <hr />
