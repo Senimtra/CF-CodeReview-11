@@ -1,4 +1,3 @@
-update.php:
 <?php
 session_start();
 require_once 'components/db_connect.php';
@@ -76,7 +75,7 @@ if (isset($_POST["submit"])) {
         $class = "alert alert-success";
         $message = "The record was successfully updated";
         $uploadError = ($pictureArray->error != 0) ? $pictureArray->ErrorMessage : '';
-        header("refresh:3;url=update.php?id={$id}");
+        header("refresh:3;url=home.php?id={$id}");
     } else {
         $class = "alert alert-danger";
         $message = "Error while updating record : <br>" . $connect->error;
@@ -109,6 +108,8 @@ $connect->close();
 </head>
 
 <body>
+    <?php include_once 'header.php' ?>;
+    <?php include_once 'navbar.php' ?>;
     <div class="container">
         <div class="<?php echo $class; ?>" role="alert">
             <p><?php echo ($message) ?? ''; ?></p>
