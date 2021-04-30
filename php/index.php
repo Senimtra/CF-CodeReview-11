@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once 'header.php';
 require_once 'components/db_connect.php';
 
 // it will never let you open index(login) page if session is set
