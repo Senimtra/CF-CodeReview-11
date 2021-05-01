@@ -43,25 +43,55 @@ $result = mysqli_query($connect, $sql);
 $tbody = '';
 if (mysqli_num_rows($result)  > 0) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $tbody .= "
-        <tr>
-        <td><img src='$row[image]'></td>
-        <td>$row[name]<br>#$row[id]<br>$row[breed]</td>
-        <td>$row[size]</td>
-        <td>$row[age]</td>
-        <td>$row[description]<br>$row[hobbies]</td>
-        <td>$row[loc_address]<br>$row[loc_zip]&nbsp;$row[loc_city]</td>
+        $tbody .= "<tr>
         <td>
-        <form action='home.php' method='post'>
-            <input type ='hidden' name='id' class='form-control' value='" . $row['id'] . "'/>
-            <input type ='hidden' name='image' class='form-control' value='" . $row['image'] . "'/>
-            <input type ='hidden' name='breed' class='form-control' value='" . $row['breed'] . "'/>
-            <input type ='hidden' name='name' class='form-control' value='" . $row['name'] . "'/>
-            <button class='btn btn-success btn-sm' name='submit' type='submit'>Adopt</button>
-        </form>
-    </td>
-    </tr>";
+        <div class='card cardIndex mx-2 my-3'>
+            <div class='row g-0'>
+                <div class='col-md-3 p-3 cardImg'>
+                    <img src='$row[image]'>
+                </div>
+                <div class='col-md-7 p-3'>
+                    <div class='card-body'>
+                        <p class='card-title'><strong>$row[name]</strong><small>&nbsp;&nbsp;|&nbsp;$row[breed],&nbsp;$row[size],&nbsp;$row[age]&nbsp;years</small></h5>
+                        <p class='card-text'><small>$row[loc_address]&nbsp;$row[loc_zip]&nbsp;$row[loc_city]</small></p>
+                        <p class='card-text'><i>$row[description]<br>$row[hobbies]</i></p>
+                    </div>
+                </div>
+                <div class='col-md-1 p-3'>
+                </div>
+                <div class='col-md-1 p-3 d-flex flex-column align-items-end'>
+                    <form action='home.php' method='post'>
+                        <input type ='hidden' name='id' class='form-control' value='" . $row['id'] . "'/>
+                        <input type ='hidden' name='image' class='form-control' value='" . $row['image'] . "'/>
+                        <input type ='hidden' name='breed' class='form-control' value='" . $row['breed'] . "'/>
+                        <input type ='hidden' name='name' class='form-control' value='" . $row['name'] . "'/>
+                        <button class='btn btn-success btn-sm' name='submit' type='submit'>Adopt</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </td>
+        </tr>";
     };
+    //     $tbody .= "
+    //     <tr>
+    //     <td><img src='$row[image]'></td>
+    //     <td>$row[name]<br>#$row[id]<br>$row[breed]</td>
+    //     <td>$row[size]</td>
+    //     <td>$row[age]</td>
+    //     <td>$row[description]<br>$row[hobbies]</td>
+    //     <td>$row[loc_address]<br>$row[loc_zip]&nbsp;$row[loc_city]</td>
+    //     <td>
+    //     <form action='home.php' method='post'>
+    //         <input type ='hidden' name='id' class='form-control' value='" . $row['id'] . "'/>
+    //         <input type ='hidden' name='image' class='form-control' value='" . $row['image'] . "'/>
+    //         <input type ='hidden' name='breed' class='form-control' value='" . $row['breed'] . "'/>
+    //         <input type ='hidden' name='name' class='form-control' value='" . $row['name'] . "'/>
+    //         <button class='btn btn-success btn-sm' name='submit' type='submit'>Adopt</button>
+    //     </form>
+    // </td>
+    // </tr>";
+    // };
 } else {
     $tbody =  "<tr><td colspan='5'><center>No Data Available </center></td></tr>";
 }
@@ -101,23 +131,10 @@ $connect->close();
 
                                         <!-- ### Main content begins here ### -->
 
-                                        <p class='h2'>Senior Pets</p>
-                                        <table class='table table-striped bg-secondary'>
-                                            <thead class='table-success'>
-                                                <tr>
-                                                    <th>Picture</th>
-                                                    <th>Name</th>
-                                                    <th>Size</th>
-                                                    <th>Age</th>
-                                                    <th>Details</th>
-                                                    <th>Address</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?= $tbody; ?>
-                                            </tbody>
-                                        </table>
+                                        <tbody>
+                                            <?= $tbody; ?>
+                                        </tbody>
+
                                     </div>
                                 </div>
                             </div>

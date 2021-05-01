@@ -22,16 +22,29 @@ $result = mysqli_query($connect, $sql);
 $tbody = '';
 if (mysqli_num_rows($result)  > 0) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $tbody .= "
-        <tr>
-        <td><img src='$row[image]'></td>
-        <td>$row[name]<br>#$row[id]<br>$row[breed]</td>
-        <td>$row[size]</td>
-        <td>$row[age]</td>
-        <td>$row[description]<br>$row[hobbies]</td>
-        <td>$row[loc_address]<br>$row[loc_zip]&nbsp;$row[loc_city]</td>
-        <td><a href='products/update.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Edit</button></a>
-        <a href='products/delete.php?id=" . $row['id'] . "'><button class='btn btn-danger btn-sm' type='button'>Delete</button></a></td>
+        $tbody .= "<tr>
+        <td>
+        <div class='card cardIndex mx-2 my-3'>
+            <div class='row g-0'>
+                <div class='col-md-3 p-3 cardImg'>
+                    <img src='$row[image]'>
+                </div>
+                <div class='col-md-7 p-3'>
+                    <div class='card-body'>
+                        <p class='card-title'><strong>$row[name]</strong><small>&nbsp;&nbsp;|&nbsp;$row[breed],&nbsp;$row[size],&nbsp;$row[age]&nbsp;years</small></h5>
+                        <p class='card-text'><small>$row[loc_address]&nbsp;$row[loc_zip]&nbsp;$row[loc_city]</small></p>
+                        <p class='card-text'><i>$row[description]<br>$row[hobbies]</i></p>
+                    </div>
+                </div>
+                <div class='col-md-1 p-3'>
+                </div>
+                <div class='col-md-1 p-3 d-flex flex-column align-items-end'>
+                <a href='products/update.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Edit</button></a>
+                <a href='products/delete.php?id=" . $row['id'] . "'><button class='btn btn-danger btn-sm' type='button'>Delete</button></a>
+                </div>
+            </div>
+        </div>
+        </td>
         </tr>";
     };
 } else {
@@ -74,23 +87,10 @@ $connect->close();
 
                                         <!-- ### Main content begins here ## -->
 
-                                        <p class='h2'>Our Pets</p>
-                                        <table class='table table-striped bg-secondary'>
-                                            <thead class='table-success'>
-                                                <tr>
-                                                    <th>Picture</th>
-                                                    <th>Name</th>
-                                                    <th>Size</th>
-                                                    <th>Age</th>
-                                                    <th>Details</th>
-                                                    <th>Address</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?= $tbody; ?>
-                                            </tbody>
-                                        </table>
+                                        <tbody>
+                                            <?= $tbody; ?>
+                                        </tbody>
+
                                     </div>
                                 </div>
                             </div>
