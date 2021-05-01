@@ -131,7 +131,7 @@ $connect->close();
                                             <p><?php echo ($uploadError) ?? ''; ?></p>
                                         </div>
                                         <h2>Update</h2>
-                                        <img src='pictures/<?php echo $data['picture'] ?>' alt="<?php echo $f_name ?>">
+                                        <img class="formImg" src='pictures/<?php echo $data['picture'] ?>' alt="<?php echo $f_name ?>">
                                         <form method="post" enctype="multipart/form-data">
                                             <table class="table">
                                                 <tr>

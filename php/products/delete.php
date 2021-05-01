@@ -68,7 +68,7 @@ if ($_GET['id']) {
 
                                     <div class="container content">
                                         <fieldset>
-                                            <legend class='h2 mb-3'>Delete request <img src='<?php echo $image ?>' alt="<?php echo $name ?>"></legend>
+                                            <legend class='h2 mb-3'>Delete request <img class="formImg" src='<?php echo $image ?>' alt="<?php echo $name ?>"></legend>
                                             <h5>You have selected the data below:</h5>
                                             <table class="table w-75 mt-3">
                                                 <tr>

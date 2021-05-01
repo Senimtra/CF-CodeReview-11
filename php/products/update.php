@@ -76,7 +76,7 @@ if ($_GET['id']) {
 
                                     <div class="container content">
                                         <fieldset>
-                                            <legend class='h2'>Update request <img src='<?php echo $image ?>' alt="<?php echo $name ?>">#<?php echo $id ?></legend>
+                                            <legend class='h2'>Update request <img class="formImg" src='<?php echo $image ?>' alt="<?php echo $name ?>">#<?php echo $id ?></legend>
                                             <form action="actions/a_update.php" method="post">
                                                 <table class="table">
                                                     <tr>

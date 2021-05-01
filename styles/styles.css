@@ -136,6 +136,10 @@ img {
   color: #f5efe1;
 }
 
+.formImg {
+  width: 10vh;
+}
+
 .outerRimFoot {
   border-bottom: calc(0.3vw + 0.3vh + 0.15vmin) solid #ffba08;
   border-left: calc(0.3vw + 0.3vh + 0.15vmin) solid #ffba08;
