@@ -17,11 +17,11 @@
                                                 <!-- ### Navbar-links begin here ### -->
 
                                                 <div class="navbar-nav">
-                                                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-                                                    <a class="nav-link" href="senior.php">Seniors</a>
-                                                    <a class="nav-link" href="adoptions.php">Adoptions</a>
-                                                    <a class="nav-link" href="update.php?id=<?php echo $_SESSION['user'] ?>">Profile</a>
-                                                    <a class="nav-link" href="logout.php?logout">Sign out</a>
+                                                    <a class="nav-link active" aria-current="page" href="index.php"><button class='btn btn-dark' type='button'>Home</button></a>
+                                                    <a class="nav-link" href="senior.php"><button class='btn btn-dark' type='button'>Seniors</button></a>
+                                                    <a class="nav-link" href="adoptions.php"><button class='btn btn-dark' type='button'>Adoptions</button></a>
+                                                    <a class="nav-link" href="update.php?id=<?php echo $_SESSION['user'] ?>"><button class='btn btn-dark' type='button'>Profile</button></a>
+                                                    <a class="nav-link" href="logout.php?logout"><button class='btn btn-dark' type='button'>Sign out</button></a>
                                                 </div>
                                             </div>
                                         </div>

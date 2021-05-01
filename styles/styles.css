@@ -83,9 +83,9 @@ html {
 }
 
 .navbar .btn {
-  background-color: #432818;
-  -webkit-box-shadow: 0px 0px 1px black;
-          box-shadow: 0px 0px 1px black;
+  background-color: #1c234b;
+  -webkit-box-shadow: 0px 0px px black;
+          box-shadow: 0px 0px px black;
   width: 100%;
 }
 

@@ -17,10 +17,10 @@
                                                 <!-- ### Navbar-links begin here ### -->
 
                                                 <div class="navbar-nav">
-                                                    <a class="nav-link" href="../dashBoard.php">DashBoard</a>
-                                                    <a class="nav-link" href="../products/create.php">Add Pet</a>
-                                                    <a class="nav-link" href="../users.php">Users</a>
-                                                    <a class="nav-link" href="../logout.php?logout">Sign out</a>
+                                                    <a class="nav-link active" aria-current="page" href="../dashBoard.php"><button class='btn btn-dark' type='button'>DashBoard</button></a>
+                                                    <a class="nav-link" href="../products/create.php"><button class='btn btn-dark' type='button'>Add Pet</button></a>
+                                                    <a class="nav-link" href="../users.php"><button class='btn btn-dark' type='button'>Users</button></a>
+                                                    <a class="nav-link" href="../logout.php?logout"><button class='btn btn-dark' type='button'>Sign out</button></a>
                                                 </div>
                                             </div>
                                         </div>
