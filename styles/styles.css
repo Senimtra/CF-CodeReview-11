@@ -75,12 +75,6 @@ html {
   background-color: #d00000;
 }
 
-#borderNav {
-  border: calc(0.6vw + 0.6vh + 0.3vmin) solid #03071e;
-  border-radius: calc(0.3vw + 0.3vh + 0.15vmin);
-  background-color: #03071e;
-}
-
 .navbar {
   background-color: #c2bdaf;
   border-radius: calc(0.2vw + 0.2vh + 0.1vmin);
@@ -109,9 +103,15 @@ img {
 
 #borderMain {
   border: calc(0.6vw + 0.6vh + 0.3vmin) solid #03071e;
-  border-top-left-radius: calc(0.3vw + 0.3vh + 0.15vmin);
-  border-top-right-radius: calc(0.3vw + 0.3vh + 0.15vmin);
+  border-radius: calc(0.3vw + 0.3vh + 0.15vmin);
   background-color: #03071e;
+}
+
+#groundMain {
+  border: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
+  background-color: #d00000;
+  border-bottom-left-radius: calc(0.3vw + 0.3vh + 0.15vmin);
+  border-bottom-right-radius: calc(0.3vw + 0.3vh + 0.15vmin);
 }
 
 .outerRimFoot {
@@ -133,18 +133,9 @@ img {
 }
 
 #groundFoot {
-  border-bottom: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
-  border-left: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
-  border-right: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
+  border: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
   border-bottom-left-radius: calc(0.3vw + 0.3vh + 0.15vmin);
   border-bottom-right-radius: calc(0.3vw + 0.3vh + 0.15vmin);
   background-color: #d00000;
-}
-
-#borderFoot {
-  border: calc(0.6vw + 0.6vh + 0.3vmin) solid #03071e;
-  border-bottom-left-radius: calc(0.3vw + 0.3vh + 0.15vmin);
-  border-bottom-right-radius: calc(0.3vw + 0.3vh + 0.15vmin);
-  background-color: #03071e;
 }
 /*# sourceMappingURL=styles.css.map */

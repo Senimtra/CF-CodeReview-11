@@ -6,7 +6,7 @@
                     <div class="outerRimFoot">
                         <div class="innerRimFoot">
                             <div id="groundFoot">
-                                <div id="borderFoot">
+                                <div id="borderMain">
 
                                     <!-- ### Social media ### -->
 

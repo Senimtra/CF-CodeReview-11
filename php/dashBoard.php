@@ -49,27 +49,44 @@ $connect->close();
 </head>
 
 <body>
-    <?php include_once 'header.php' ?>;
-    <?php include_once 'navbar_adm.php' ?>;
-    <div>
-        <p class='h2'>Our Pets</p>
-        <table class='table table-striped bg-secondary'>
-            <thead class='table-success'>
-                <tr>
-                    <th>Picture</th>
-                    <th>Name</th>
-                    <th>Size</th>
-                    <th>Age</th>
-                    <th>Details</th>
-                    <th>Address</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?= $tbody; ?>
-            </tbody>
-        </table>
+    <?php include_once 'header.php' ?>
+    <?php include_once 'navbar_adm.php' ?>
+    <div class="container-fluid mx-auto pt-0 px-5">
+        <div class="wrapSideOut mx-lg-5">
+            <div class="wrapSideIn mx-lg-5">
+                <div class="wrapHero m-4 mt-0 mb-0">
+                    <div class="outerRimNav">
+                        <div class="innerRimNav">
+                            <div id="groundNav">
+                                <div id="borderMain">
+                                    <div>
+                                        <p class='h2'>Our Pets</p>
+                                        <table class='table table-striped bg-secondary'>
+                                            <thead class='table-success'>
+                                                <tr>
+                                                    <th>Picture</th>
+                                                    <th>Name</th>
+                                                    <th>Size</th>
+                                                    <th>Age</th>
+                                                    <th>Details</th>
+                                                    <th>Address</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?= $tbody; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <?php include_once 'footer.php' ?>
 </body>
 
 </html>

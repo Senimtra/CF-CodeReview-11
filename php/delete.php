@@ -58,31 +58,48 @@ $connect->close();
 </head>
 
 <body>
-    <?php include_once 'header.php' ?>;
-    <?php include_once 'navbar_adm.php' ?>;
-    <div class="container content">
-        <div class="<?php echo $class; ?>" role="alert">
-            <p><?php echo ($message) ?? ''; ?></p>
+    <?php include_once 'header.php' ?>
+    <?php include_once 'navbar_adm.php' ?>
+    <div class="container-fluid mx-auto pt-0 px-5">
+        <div class="wrapSideOut mx-lg-5">
+            <div class="wrapSideIn mx-lg-5">
+                <div class="wrapHero m-4 mt-0 mb-0">
+                    <div class="outerRimNav">
+                        <div class="innerRimNav">
+                            <div id="groundNav">
+                                <div id="borderMain">
+                                    <div class="container content">
+                                        <div class="<?php echo $class; ?>" role="alert">
+                                            <p><?php echo ($message) ?? ''; ?></p>
+                                        </div>
+                                        <fieldset>
+                                            <legend class='h2 mb-3'>Delete request <img class='img-thumbnail rounded-circle' src='pictures/<?php echo $picture ?>' alt="<?php echo $f_name ?>"></legend>
+                                            <h5>You have selected the data below:</h5>
+                                            <table class="table w-75 mt-3">
+                                                <tr>
+                                                    <td><?php echo "$f_name $l_name" ?></td>
+                                                    <td><?php echo $email ?></td>
+                                                    <td><?php echo $date_of_birth ?></td>
+                                                </tr>
+                                            </table>
+                                            <h3 class="mb-4">Do you really want to delete this user?</h3>
+                                            <form method="post">
+                                                <input type="hidden" name="id" value="<?php echo $id ?>" />
+                                                <input type="hidden" name="picture" value="<?php echo $picture ?>" />
+                                                <button class="btn btn-danger" type="submit">Yes, delete it!</button>
+                                                <a href="dashboard.php"><button class="btn btn-warning" type="button">No, go back!</button></a>
+                                            </form>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <fieldset>
-            <legend class='h2 mb-3'>Delete request <img class='img-thumbnail rounded-circle' src='pictures/<?php echo $picture ?>' alt="<?php echo $f_name ?>"></legend>
-            <h5>You have selected the data below:</h5>
-            <table class="table w-75 mt-3">
-                <tr>
-                    <td><?php echo "$f_name $l_name" ?></td>
-                    <td><?php echo $email ?></td>
-                    <td><?php echo $date_of_birth ?></td>
-                </tr>
-            </table>
-            <h3 class="mb-4">Do you really want to delete this user?</h3>
-            <form method="post">
-                <input type="hidden" name="id" value="<?php echo $id ?>" />
-                <input type="hidden" name="picture" value="<?php echo $picture ?>" />
-                <button class="btn btn-danger" type="submit">Yes, delete it!</button>
-                <a href="dashboard.php"><button class="btn btn-warning" type="button">No, go back!</button></a>
-            </form>
-        </fieldset>
     </div>
+    <?php include_once 'footer.php' ?>
 </body>
 
 </html>

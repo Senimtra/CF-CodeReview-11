@@ -79,28 +79,45 @@ $connect->close();
 </head>
 
 <body>
-    <?php include_once 'header.php' ?>;
-    <div class="container content">
-        <form class="w-75" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
-            <h2>LogIn</h2>
-            <hr />
-            <?php
-            if (isset($errMSG)) {
-                echo $errMSG;
-            }
-            ?>
+    <?php include_once 'header.php' ?>
+    <div class="container-fluid mx-auto px-5">
+        <div class="wrapSideOut mx-lg-5">
+            <div class="wrapSideIn mx-lg-5">
+                <div class="wrapHero m-4 mt-0 mb-0">
+                    <div class="outerRimNav">
+                        <div class="innerRimNav">
+                            <div id="groundNav">
+                                <div id="borderMain">
+                                    <div class="container content">
+                                        <form class="w-75" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
+                                            <h2>LogIn</h2>
+                                            <hr />
+                                            <?php
+                                            if (isset($errMSG)) {
+                                                echo $errMSG;
+                                            }
+                                            ?>
 
-            <input type="email" autocomplete="off" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" />
-            <span class="text-danger"><?php echo $emailError; ?></span>
+                                            <input type="email" autocomplete="off" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" />
+                                            <span class="text-danger"><?php echo $emailError; ?></span>
 
-            <input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
-            <span class="text-danger"><?php echo $passError; ?></span>
-            <hr />
-            <button button class="btn btn-block btn-primary" type="submit" name="btn-login">Sign In</button>
-            <hr />
-            <a href="register.php">Not registered yet? Click here</a>
-        </form>
+                                            <input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
+                                            <span class="text-danger"><?php echo $passError; ?></span>
+                                            <hr />
+                                            <button button class="btn btn-block btn-primary" type="submit" name="btn-login">Sign In</button>
+                                            <hr />
+                                            <a href="register.php">Not registered yet? Click here</a>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <?php include_once 'footer.php' ?>
 </body>
 
 </html>

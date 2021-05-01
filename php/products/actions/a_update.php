@@ -55,19 +55,36 @@ if ($_POST) {
 </head>
 
 <body>
-    <?php include_once '../../header.php' ?>;
-    <?php include_once 'navbar_adm_b.php' ?>;
-    <div class="container content">
-        <div class="mt-3 mb-3">
-            <h1>Update request response</h1>
-        </div>
-        <div class="alert alert-<?php echo $class; ?>" role="alert">
-            <p><?php echo ($message) ?? ''; ?></p>
-            <p><?php echo ($uploadError) ?? ''; ?></p>
-            <a href='../update.php?id=<?= $id; ?>'><button class="btn btn-warning" type='button'>Back</button></a>
-            <a href='../../dashBoard.php'><button class="btn btn-success" type='button'>Home</button></a>
+    <?php include_once '../../header.php' ?>
+    <?php include_once 'navbar_adm_b.php' ?>
+    <div class="container-fluid mx-auto pt-0 px-5">
+        <div class="wrapSideOut mx-lg-5">
+            <div class="wrapSideIn mx-lg-5">
+                <div class="wrapHero m-4 mt-0 mb-0">
+                    <div class="outerRimNav">
+                        <div class="innerRimNav">
+                            <div id="groundNav">
+                                <div id="borderMain">
+                                    <div class="container content">
+                                        <div class="mt-3 mb-3">
+                                            <h1>Update request response</h1>
+                                        </div>
+                                        <div class="alert alert-<?php echo $class; ?>" role="alert">
+                                            <p><?php echo ($message) ?? ''; ?></p>
+                                            <p><?php echo ($uploadError) ?? ''; ?></p>
+                                            <a href='../update.php?id=<?= $id; ?>'><button class="btn btn-warning" type='button'>Back</button></a>
+                                            <a href='../../dashBoard.php'><button class="btn btn-success" type='button'>Home</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <?php include_once '../../footer.php' ?>
 </body>
 
 </html>
