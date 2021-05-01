@@ -10,7 +10,7 @@
 
                                     <!-- ### Social media ### -->
 
-                                    <div>
+                                    <div id="footer">
                                         <h3>Adopt a pet</h3>
                                     </div>
                                     <div id="social" class="gap-2 d-flex align-items-center">
