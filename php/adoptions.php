@@ -33,22 +33,36 @@ $result = mysqli_query($connect, $sql);
 $tbody = '';
 if (mysqli_num_rows($result)  > 0) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $tbody .= "
-        <tr>
-        <td><img src='$row[image]'></td>
-        <td>$row[name]</td>
-        <td>$row[breed]</td>
-        <td>$row[fk_userId]</td>
-        <td>$row[adopt_date]</td>
+        $tbody .= "<tr>
         <td>
-        <form action='adoptions.php' method='post'>
-        <input type ='hidden' name='id' class='form-control' value='" . $row['id'] . "'/>
-        <button class='btn btn-danger btn-sm' name='cancel' type='submit'>Cancel</button>
-        </form></td>
-    </tr>";
+        <div class='card cardIndex mx-2 my-3'>
+            <div class='row g-0'>
+                <div class='col-md-3 p-3 cardImg'>
+                    <img src='$row[image]'>
+                </div>
+                <div class='col-md-7 p-3'>
+                    <div class='card-body'>
+                        <p class='card-title'><b>Name:</b> &nbsp;$row[name]</strong>
+                        <p class='card-text'><b>Breed:</b> &nbsp;$row[breed]</p>
+                        <p class='card-text'><b>Adopter:</b> &nbsp;User #$row[fk_userId]</p>
+                        <p class='card-text'><b>Adoption Date:</b>&nbsp; $row[adopt_date]</p>
+                    </div>
+                </div>
+                <div class='col-md-1 p-3'>
+                </div>
+                <div class='col-md-1 p-3 d-flex flex-column align-items-end'>
+                    <form action='adoptions.php' method='post'>
+                    <input type ='hidden' name='id' class='form-control' value='" . $row['id'] . "'/>
+                    <button class='btn btn-danger btn-sm' name='cancel' type='submit'>Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </td>
+        </tr>";
     };
 } else {
-    $tbody =  "<tr><td colspan='5'><center>No Data Available</center></td></tr>";
+    $tbody =  "<tr><td colspan='5'><center><div class='msg'>Sorry, there aren't any adoptions yet.</div></center></td></tr>";
 }
 
 $connect->close();
@@ -82,26 +96,14 @@ $connect->close();
                         <div class="innerRimNav">
                             <div id="groundNav">
                                 <div id="borderMain">
-
-                                    <!-- ### Main content begins here ### -->
-
                                     <div>
-                                        <p class='h2'>Adopted Pets</p>
-                                        <table class='table table-striped bg-secondary'>
-                                            <thead class='table-success'>
-                                                <tr>
-                                                    <th>Picture</th>
-                                                    <th>Name</th>
-                                                    <th>Breed</th>
-                                                    <th>User-ID</th>
-                                                    <th>Adoption Date</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?= $tbody; ?>
-                                            </tbody>
-                                        </table>
+
+                                        <!-- ### Main content begins here ### -->
+
+                                        <tbody>
+                                            <?= $tbody; ?>
+                                        </tbody>
+
                                     </div>
                                 </div>
                             </div>
