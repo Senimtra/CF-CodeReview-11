@@ -52,7 +52,7 @@ if (mysqli_num_rows($result)  > 0) {
                 <div class='col-md-7 p-3'>
                     <div class='card-body'>
                         <p class='card-title'><strong>$row[name]</strong><small>&nbsp;&nbsp;|&nbsp;$row[breed],&nbsp;$row[size],&nbsp;$row[age]&nbsp;years</small>
-                        <p class='card-text'><small>$row[loc_address]&nbsp;$row[loc_zip]&nbsp;$row[loc_city]</small></p>
+                        <p class='card-text'><small>$row[loc_address],&nbsp;$row[loc_zip]&nbsp;$row[loc_city]</small></p>
                         <p class='card-text'><i>$row[description]<br>$row[hobbies]</i></p>
                     </div>
                 </div>
