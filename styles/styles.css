@@ -22,20 +22,20 @@ html {
 }
 
 #borderHead {
-  border-top: calc(0.6vw + 0.6vh + 0.3vmin) solid #03071e;
-  border-left: calc(0.6vw + 0.6vh + 0.3vmin) solid #03071e;
-  border-right: calc(0.6vw + 0.6vh + 0.3vmin) solid #03071e;
+  border-top: calc(0.6vw + 0.6vh + 0.3vmin) solid #1c234b;
+  border-left: calc(0.6vw + 0.6vh + 0.3vmin) solid #1c234b;
+  border-right: calc(0.6vw + 0.6vh + 0.3vmin) solid #1c234b;
   border-radius: calc(0.3vw + 0.3vh + 0.15vmin);
-  background-color: #03071e;
+  background-color: #1c234b;
 }
 
 #groundHead {
-  border-top: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
-  border-left: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
-  border-right: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
+  border-top: calc(0.6vw + 0.6vh + 0.3vmin) solid #912c2c;
+  border-left: calc(0.6vw + 0.6vh + 0.3vmin) solid #912c2c;
+  border-right: calc(0.6vw + 0.6vh + 0.3vmin) solid #912c2c;
   border-top-left-radius: calc(0.3vw + 0.3vh + 0.15vmin);
   border-top-right-radius: calc(0.3vw + 0.3vh + 0.15vmin);
-  background-color: #d00000;
+  background-color: #912c2c;
 }
 
 .outerRim {
@@ -48,10 +48,10 @@ html {
 }
 
 .innerRim {
-  border-top: calc(0.3vw + 0.3vh + 0.15vmin) solid #faa307;
-  border-left: calc(0.3vw + 0.3vh + 0.15vmin) solid #faa307;
-  border-right: calc(0.3vw + 0.3vh + 0.15vmin) solid #faa307;
-  background-color: #faa307;
+  border-top: calc(0.3vw + 0.3vh + 0.15vmin) solid #c98403;
+  border-left: calc(0.3vw + 0.3vh + 0.15vmin) solid #c98403;
+  border-right: calc(0.3vw + 0.3vh + 0.15vmin) solid #c98403;
+  background-color: #c98403;
   border-top-left-radius: calc(0.3vw + 0.3vh + 0.15vmin);
   border-top-right-radius: calc(0.3vw + 0.3vh + 0.15vmin);
 }
@@ -63,16 +63,16 @@ html {
 }
 
 .innerRimNav {
-  border-left: calc(0.3vw + 0.3vh + 0.15vmin) solid #faa307;
-  border-right: calc(0.3vw + 0.3vh + 0.15vmin) solid #faa307;
-  background-color: #ffba08;
+  border-left: calc(0.3vw + 0.3vh + 0.15vmin) solid #c98403;
+  border-right: calc(0.3vw + 0.3vh + 0.15vmin) solid #c98403;
+  background-color: #c98403;
 }
 
 #groundNav {
-  border-top: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
-  border-left: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
-  border-right: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
-  background-color: #d00000;
+  border-top: calc(0.6vw + 0.6vh + 0.3vmin) solid #912c2c;
+  border-left: calc(0.6vw + 0.6vh + 0.3vmin) solid #912c2c;
+  border-right: calc(0.6vw + 0.6vh + 0.3vmin) solid #912c2c;
+  background-color: #912c2c;
 }
 
 .navbar {
@@ -102,14 +102,13 @@ img {
 }
 
 #borderMain {
-  border: calc(0.6vw + 0.6vh + 0.3vmin) solid #03071e;
+  border: calc(0.6vw + 0.6vh + 0.3vmin) solid #1c234b;
   border-radius: calc(0.3vw + 0.3vh + 0.15vmin);
-  background-color: #03071e;
+  background-color: #1c234b;
 }
 
 #groundMain {
-  border: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
-  background-color: #d00000;
+  border: calc(0.6vw + 0.6vh + 0.3vmin) solid #912c2c;
   border-bottom-left-radius: calc(0.3vw + 0.3vh + 0.15vmin);
   border-bottom-right-radius: calc(0.3vw + 0.3vh + 0.15vmin);
 }
@@ -124,18 +123,18 @@ img {
 }
 
 .innerRimFoot {
-  border-bottom: calc(0.3vw + 0.3vh + 0.15vmin) solid #faa307;
-  border-left: calc(0.3vw + 0.3vh + 0.15vmin) solid #faa307;
-  border-right: calc(0.3vw + 0.3vh + 0.15vmin) solid #faa307;
-  background-color: #faa307;
+  border-bottom: calc(0.3vw + 0.3vh + 0.15vmin) solid #c98403;
+  border-left: calc(0.3vw + 0.3vh + 0.15vmin) solid #c98403;
+  border-right: calc(0.3vw + 0.3vh + 0.15vmin) solid #c98403;
+  background-color: #c98403;
   border-bottom-left-radius: calc(0.3vw + 0.3vh + 0.15vmin);
   border-bottom-right-radius: calc(0.3vw + 0.3vh + 0.15vmin);
 }
 
 #groundFoot {
-  border: calc(0.6vw + 0.6vh + 0.3vmin) solid #d00000;
+  border: calc(0.6vw + 0.6vh + 0.3vmin) solid #912c2c;
   border-bottom-left-radius: calc(0.3vw + 0.3vh + 0.15vmin);
   border-bottom-right-radius: calc(0.3vw + 0.3vh + 0.15vmin);
-  background-color: #d00000;
+  background-color: #912c2c;
 }
 /*# sourceMappingURL=styles.css.map */
