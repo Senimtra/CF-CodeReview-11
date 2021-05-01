@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2021 at 01:43 PM
+-- Generation Time: May 01, 2021 at 01:27 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -22,6 +22,22 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `cr11_petadoption_gregor` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `cr11_petadoption_gregor`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `adoptions`
+--
+
+CREATE TABLE `adoptions` (
+  `id` int(11) NOT NULL,
+  `fk_petId` int(11) DEFAULT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `breed` varchar(20) DEFAULT NULL,
+  `fk_userId` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `adopt_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -79,9 +95,42 @@ INSERT INTO `pets` (`id`, `name`, `breed`, `size`, `age`, `description`, `hobbie
 (240, 'Isabelle', 'Pony', 'large', 15, 'Very loving and beautiful pony mare.', 'Doesn\'t get along very well with other ponies.', 74801, 'Shawnee', '900 Ottis Street', 'http://shallow.codes/images_CR11/pet_29.jpg'),
 (241, 'Murdoc', 'Chameleon', 'small', 4, 'Only for people with a lot of experience with terrariums.', 'Likes to climb very much and all day long. Needs a humid environment and a lot of fresh air from outside.', 47408, 'Bloomington', '3838 Conaway Street', 'http://shallow.codes/images_CR11/pet_30.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `date_of_birth` date NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `picture` varchar(255) DEFAULT NULL,
+  `status` varchar(4) NOT NULL DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `password`, `date_of_birth`, `email`, `picture`, `status`) VALUES
+(1, 'user', 'user', '8711bf081a382ea58265bd3612bf725d05cb0feea56651fb37ff056b43433011', '1970-01-01', 'user@mail.com', 'avatar.png', 'user'),
+(2, 'admin', 'admin', '8b05cad6b8cd56e16531ee8f7ba87e7050cd6441c00330ab36fa6aa43f0cc948', '1970-01-01', 'admin@mail.com', 'avatar.png', 'adm');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `adoptions`
+--
+ALTER TABLE `adoptions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_userId` (`fk_userId`),
+  ADD KEY `fk_petId` (`fk_petId`);
 
 --
 -- Indexes for table `pets`
@@ -90,14 +139,43 @@ ALTER TABLE `pets`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `adoptions`
+--
+ALTER TABLE `adoptions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `pets`
 --
 ALTER TABLE `pets`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `adoptions`
+--
+ALTER TABLE `adoptions`
+  ADD CONSTRAINT `adoptions_ibfk_1` FOREIGN KEY (`fk_userId`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `adoptions_ibfk_2` FOREIGN KEY (`fk_petId`) REFERENCES `pets` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
