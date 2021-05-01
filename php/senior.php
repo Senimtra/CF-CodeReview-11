@@ -94,7 +94,7 @@ $connect->close();
     <?php include_once 'header.php' ?>;
     <?php include_once 'navbar.php' ?>;
     <div>
-        <p class='h2'>Our Pets</p>
+        <p class='h2'>Senior Pets</p>
         <table class='table table-striped bg-secondary'>
             <thead class='table-success'>
                 <tr>

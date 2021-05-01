@@ -7,6 +7,7 @@
             <div class="navbar-nav">
                 <a class="nav-link" href="../../dashBoard.php">DashBoard</a>
                 <a class="nav-link" href="../../products/create.php">Add Pet</a>
+                <a class="nav-link" href="../../users.php">Users</a>
                 <a class="nav-link" href="../../logout.php?logout">Sign out</a>
             </div>
         </div>
