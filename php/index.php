@@ -1,14 +1,17 @@
 <?php
+
+// ### Sessions ###
+
 session_start();
 require_once 'components/db_connect.php';
 
-// it will never let you open index(login) page if session is set
 if (isset($_SESSION['user']) != "") {
     header("Location: home.php");
     exit;
 }
+
 if (isset($_SESSION['adm']) != "") {
-    header("Location: dashboard.php"); // redirects to home.php
+    header("Location: dashboard.php");
 }
 
 $error = false;
@@ -16,7 +19,8 @@ $email = $password = $emailError = $passError = '';
 
 if (isset($_POST['btn-login'])) {
 
-    // prevent sql injections/ clear user invalid inputs
+    // prevent sql injections / clear user invalid inputs
+
     $email = trim($_POST['email']);
     $email = strip_tags($email);
     $email = htmlspecialchars($email);
@@ -24,6 +28,7 @@ if (isset($_POST['btn-login'])) {
     $pass = trim($_POST['pass']);
     $pass = strip_tags($pass);
     $pass = htmlspecialchars($pass);
+
     // prevent sql injections / clear user invalid inputs
 
     if (empty($email)) {
@@ -40,6 +45,7 @@ if (isset($_POST['btn-login'])) {
     }
 
     // if there's no error, continue to login
+
     if (!$error) {
 
         $password = hash('sha256', $pass); // password hashing
@@ -64,6 +70,7 @@ if (isset($_POST['btn-login'])) {
         }
     }
 }
+
 $connect->close();
 ?>
 
@@ -71,6 +78,9 @@ $connect->close();
 <html lang="en">
 
 <head>
+
+    <!-- ### Add Bootstrap & own CSS file ### -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Registration System</title>
@@ -79,6 +89,9 @@ $connect->close();
 </head>
 
 <body>
+
+    <!-- ### Include header ### -->
+
     <?php include_once 'header.php' ?>
     <div class="container-fluid mx-auto px-5">
         <div class="wrapSideOut mx-lg-5">
@@ -88,22 +101,27 @@ $connect->close();
                         <div class="innerRimNav">
                             <div id="groundNav">
                                 <div id="borderMain">
+
+                                    <!-- ### Main content begins here ### -->
+
                                     <div class="container content">
                                         <form class="w-75" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
                                             <h2>LogIn</h2>
                                             <hr />
+
                                             <?php
                                             if (isset($errMSG)) {
                                                 echo $errMSG;
                                             }
                                             ?>
 
-                                            <input type="email" autocomplete="off" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" />
+                                            <input type="emil" autocomplete="off" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" />
                                             <span class="text-danger"><?php echo $emailError; ?></span>
 
                                             <input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
                                             <span class="text-danger"><?php echo $passError; ?></span>
                                             <hr />
+
                                             <button button class="btn btn-block btn-primary" type="submit" name="btn-login">Sign In</button>
                                             <hr />
                                             <a href="register.php">Not registered yet? Click here</a>
@@ -117,6 +135,9 @@ $connect->close();
             </div>
         </div>
     </div>
+
+    <!-- ### Include footer ### -->
+
     <?php include_once 'footer.php' ?>
 </body>
 

@@ -1,5 +1,7 @@
 <?php
 
+// ### Sessions ###
+
 session_start();
 
 if (isset($_SESSION['user']) != "") {
@@ -13,6 +15,8 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
 }
 
 require_once '../components/db_connect.php';
+
+// ### Fetch pet values from array ###
 
 if ($_GET['id']) {
     $id = $_GET['id'];
@@ -30,22 +34,6 @@ if ($_GET['id']) {
         $loc_city = $data['loc_city'];
         $loc_address = $data['loc_address'];
         $image = $data['image'];
-
-        // $supplier = $data['fk_supplierId'];
-
-        // $resultSup = mysqli_query($connect, "SELECT * FROM supplier");
-        // $supList = "";
-        // if (mysqli_num_rows($resultSup) > 0) {
-        //     while ($row = $resultSup->fetch_array(MYSQLI_ASSOC)) {
-        //         if ($row['supplierId'] == $supplier) {
-        //             $supList .= "<option selected value='{$row['supplierId']}'>{$row['sup_name']}</option>";
-        //         } else {
-        //             $supList .= "<option value='{$row['supplierId']}'>{$row['sup_name']}</option>";
-        //         }
-        //     }
-        // } else {
-        //     $supList = "<li>There are no suppliers registered</li>";
-        // }
     } else {
         header("location: error.php");
     }
@@ -59,6 +47,9 @@ if ($_GET['id']) {
 <html>
 
 <head>
+
+    <!-- ### Add Bootstrap & own CSS file ### -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Pet</title>
@@ -67,6 +58,9 @@ if ($_GET['id']) {
 </head>
 
 <body>
+
+    <!-- ### Include header & navbar ### -->
+
     <?php include_once '../header.php' ?>
     <?php include_once 'navbar_adm_a.php' ?>
     <div class="container-fluid mx-auto pt-0 px-5">
@@ -77,6 +71,9 @@ if ($_GET['id']) {
                         <div class="innerRimNav">
                             <div id="groundNav">
                                 <div id="borderMain">
+
+                                    <!-- ### Main content begins here ### -->
+
                                     <div class="container content">
                                         <fieldset>
                                             <legend class='h2'>Update request <img src='<?php echo $image ?>' alt="<?php echo $name ?>">#<?php echo $id ?></legend>
@@ -140,6 +137,9 @@ if ($_GET['id']) {
             </div>
         </div>
     </div>
+
+    <!-- ### Include footer ### -->
+
     <?php include_once '../footer.php' ?>
 </body>
 

@@ -1,5 +1,7 @@
 <?php
 
+// ### Sessions ###
+
 session_start();
 
 if (isset($_SESSION['user']) != "") {
@@ -13,7 +15,8 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
 }
 
 require_once '../../components/db_connect.php';
-require_once '../../components/file_upload.php';
+
+// ### Get values from create form ###
 
 if ($_POST) {
     $name = $_POST['name'];
@@ -27,18 +30,7 @@ if ($_POST) {
     $loc_address = $_POST['loc_address'];
     $image = $_POST['image'];
 
-    // $supplier = $_POST['supplier'];
-
-    $uploadError = '';
-    //this function exists in the service file upload.
-    // $picture = file_upload($_FILES['picture'], 'product');
-
-    // if ($supplier == 'none') {
-    //     //checks if the supplier is undefined and insert null in the DB
-    //     $sql = "INSERT INTO products (name, price, picture, fk_supplierId) VALUES ('$name', '$price', '$picture->fileName', null)";
-    // } else {
-    //     $sql = "INSERT INTO products (name, price, picture, fk_supplierId) VALUES ('$name', '$price', '$picture->fileName', '$supplier')";
-    // }
+    // ### Insert new pet into table ###
 
     $sql = "INSERT pets SET name = '$name', breed = '$breed', size = '$size', age = '$age', description = '$description', hobbies = '$hobbies', loc_zip = '$loc_zip', loc_city = '$loc_city', loc_address = '$loc_address', image = '$image'";
 
@@ -48,11 +40,9 @@ if ($_POST) {
             <table class='table w-50'><tr>
             <td> $name </td>
             </tr></table><hr>";
-        // $uploadError = ($picture->error != 0) ? $picture->ErrorMessage : '';
     } else {
         $class = "danger";
         $message = "Error while creating record. Try again: <br>" . $connect->error;
-        // $uploadError = ($picture->error != 0) ? $picture->ErrorMessage : '';
     }
     $connect->close();
 } else {
@@ -64,6 +54,9 @@ if ($_POST) {
 <html lang="en">
 
 <head>
+
+    <!-- ### Add Bootstrap & own CSS file ### -->
+
     <meta charset="UTF-8">
     <title>Add Pet Message</title>
     <?php require_once '../../components/boot.php' ?>
@@ -71,6 +64,9 @@ if ($_POST) {
 </head>
 
 <body>
+
+    <!-- ### Include header & navbar ### -->
+
     <?php include_once '../../header.php' ?>
     <?php include_once 'navbar_adm_b.php' ?>
     <div class="container-fluid mx-auto pt-0 px-5">
@@ -81,6 +77,9 @@ if ($_POST) {
                         <div class="innerRimNav">
                             <div id="groundNav">
                                 <div id="borderMain">
+
+                                    <!-- ### Main content begins here ### -->
+
                                     <div class="container content">
                                         <div class="mt-3 mb-3">
                                             <h1>Create request response</h1>
@@ -99,6 +98,9 @@ if ($_POST) {
             </div>
         </div>
     </div>
+
+    <!-- ### Include footer ### -->
+
     <?php include_once '../../footer.php' ?>
 </body>
 

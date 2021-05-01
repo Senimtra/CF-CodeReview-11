@@ -1,18 +1,22 @@
 <?php
+
+// ### Sessions ###
+
 session_start();
+
 require_once 'components/db_connect.php';
 require_once 'components/file_upload.php';
-// if session is not set this will redirect to login page
+
 if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     header("Location: index.php");
     exit;
 }
 $backBtn = '';
-//if it is a user it will create a back button to home.php
+
 if (isset($_SESSION["user"])) {
     $backBtn = "home.php";
 }
-//if it is a adm it will create a back button to dashboard.php
+
 if (isset($_SESSION["adm"])) {
     $backBtn = "dashBoard.php";
 }
@@ -24,8 +28,9 @@ if (isset($_SESSION["user"])) {
 $sql = "SELECT * FROM user WHERE id = {$session}";
 $result = mysqli_query($connect, $sql);
 $row = $result->fetch_assoc();
-# var_dump($row);
-//fetch and populate form
+
+// ### Fetch user/admin values from arrays ###
+
 if ($row["status"] == "adm") {
     if (isset($_GET['id'])) {
         $id = $_GET['id']; # $_SESSION["user"];
@@ -53,7 +58,9 @@ if ($row["status"] == "adm") {
         $picture = $data['picture'];
     }
 }
-//update
+
+// ### Update user ###
+
 $class = 'd-none';
 if (isset($_POST["submit"])) {
     $f_name = $_POST['first_name'];
@@ -83,12 +90,17 @@ if (isset($_POST["submit"])) {
         header("refresh:3;url=update.php?id={$id}");
     }
 }
+
 $connect->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
+    <!-- ### Add Bootstrap & own CSS file ### -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
@@ -97,6 +109,9 @@ $connect->close();
 </head>
 
 <body>
+
+    <!-- ### Include header & navbar ### -->
+
     <?php include_once 'header.php' ?>
     <?php include_once 'navbar.php' ?>
     <div class="container-fluid mx-auto pt-0 px-5">
@@ -107,6 +122,9 @@ $connect->close();
                         <div class="innerRimNav">
                             <div id="groundNav">
                                 <div id="borderMain">
+
+                                    <!-- ### Main content begins here ### -->
+
                                     <div class="container content">
                                         <div class="<?php echo $class; ?>" role="alert">
                                             <p><?php echo ($message) ?? ''; ?></p>
@@ -153,6 +171,9 @@ $connect->close();
             </div>
         </div>
     </div>
+
+    <!-- ### Include footer ### -->
+
     <?php include_once 'footer.php' ?>
 </body>
 

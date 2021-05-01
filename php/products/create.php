@@ -1,4 +1,7 @@
 <?php
+
+// ### Sessions ###
+
 session_start();
 require_once '../components/db_connect.php';
 
@@ -12,20 +15,15 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     exit;
 }
 
-// $suppliers = "";
-// $result = mysqli_query($connect, "SELECT * FROM supplier");
-
-// while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-//     $suppliers .=
-//         "<option value='{$row['supplierId']}'>{$row['sup_name']}</option>";
-// }
-// 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
+    <!-- ### Add Bootstrap & own CSS file ### -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Pet</title>
@@ -34,6 +32,9 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
 </head>
 
 <body>
+
+    <!-- ### Include header & navbar ### -->
+
     <?php include_once '../header.php' ?>
     <?php include_once 'navbar_adm_a.php' ?>
     <div class="container-fluid mx-auto pt-0 px-5">
@@ -44,6 +45,9 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
                         <div class="innerRimNav">
                             <div id="groundNav">
                                 <div id="borderMain">
+
+                                    <!-- ### Main content begins here ### -->
+
                                     <div class="container content">
                                         <fieldset>
                                             <legend class='h2'>Add Pet</legend>
@@ -105,6 +109,9 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
             </div>
         </div>
     </div>
+
+    <!-- ### Include footer ### -->
+
     <?php include_once '../footer.php' ?>
 </body>
 

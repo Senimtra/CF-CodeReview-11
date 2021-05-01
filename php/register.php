@@ -1,10 +1,13 @@
 <?php
-session_start(); // start a new session or continues the previous
+
+// ### Sessions ###
+
+session_start();
 if (isset($_SESSION['user']) != "") {
-    header("Location: home.php"); // redirects to home.php
+    header("Location: home.php");
 }
 if (isset($_SESSION['adm']) != "") {
-    header("Location: dashboard.php"); // redirects to home.php
+    header("Location: dashboard.php");
 }
 require_once 'components/db_connect.php';
 require_once 'components/file_upload.php';
@@ -14,14 +17,17 @@ $fnameError = $lnameError = $emailError = $dateError = $passError = $picError = 
 if (isset($_POST['btn-signup'])) {
 
     // sanitize user input to prevent sql injection
+
     $fname = trim($_POST['fname']);
 
-    //trim - strips whitespace (or other characters) from the beginning and end of a string
+    // trim - strips whitespace (or other characters) from the beginning and end of a string
+
     $fname = strip_tags($fname);
 
     // strip_tags -- strips HTML and PHP tags from a string
 
     $fname = htmlspecialchars($fname);
+
     // htmlspecialchars converts special characters to HTML entities
 
     $lname = trim($_POST['lname']);
@@ -44,6 +50,7 @@ if (isset($_POST['btn-signup'])) {
     $picture = file_upload($_FILES['picture']);
 
     // basic name validation
+
     if (empty($fname) || empty($lname)) {
         $error = true;
         $fnameError = "Please enter your full name and surname";
@@ -56,6 +63,7 @@ if (isset($_POST['btn-signup'])) {
     }
 
     //basic email validation
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = true;
         $emailError = "Please enter valid email address.";
@@ -69,12 +77,16 @@ if (isset($_POST['btn-signup'])) {
             $emailError = "Provided Email is already in use.";
         }
     }
+
     //checks if the date input was left empty
+
     if (empty($date_of_birth)) {
         $error = true;
         $dateError = "Please enter your date of birth.";
     }
+
     // password validation
+
     if (empty($pass)) {
         $error = true;
         $passError = "Please enter password.";
@@ -84,11 +96,16 @@ if (isset($_POST['btn-signup'])) {
     }
 
     // password hashing for security
+
     $password = hash('sha256', $pass);
+
     // if there's no error, continue to signup
+
     if (!$error) {
 
-        $query = "INSERT INTO user(first_name, last_name, password, date_of_birth, email, picture) VALUES('$fname', '$lname', '$password', '$date_of_birth', '$email', '$picture->fileName')";
+        // ### Insert user record into table ###
+
+        $query = "INSERT INTO user(first_name, last_name, password, date_of_birth, email, picture) VALUES ('$fname', '$lname', '$password', '$date_of_birth', '$email', '$picture->fileName')";
         $res = mysqli_query($connect, $query);
 
         if ($res) {
@@ -110,6 +127,9 @@ $connect->close();
 <html lang="en">
 
 <head>
+
+    <!-- ### Add Bootstrap & own CSS file ### -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Registration System</title>
@@ -118,6 +138,9 @@ $connect->close();
 </head>
 
 <body>
+
+    <!-- ### Include header ### -->
+
     <?php include_once 'header.php' ?>
     <div class="container-fluid mx-auto pt-0 px-5">
         <div class="wrapSideOut mx-lg-5">
@@ -127,6 +150,9 @@ $connect->close();
                         <div class="innerRimNav">
                             <div id="groundNav">
                                 <div id="borderMain">
+
+                                    <!-- ### Main content begins here ### -->
+
                                     <div class="container content">
                                         <form class="w-75" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off" enctype="multipart/form-data">
                                             <h2>Sign Up.</h2>
@@ -173,6 +199,9 @@ $connect->close();
             </div>
         </div>
     </div>
+
+    <!-- ### Include footer ### -->
+
     <?php include_once 'footer.php' ?>
 </body>
 

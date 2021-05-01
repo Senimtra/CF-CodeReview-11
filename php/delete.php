@@ -1,18 +1,24 @@
 <?php
+
+// ### Sessions ###
+
 session_start();
 require_once 'components/db_connect.php';
-// if session is not set this will redirect to login page
+
 if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     header("Location: index.php");
     exit;
 }
+
 if (isset($_SESSION["user"])) {
     header("Location: home.php");
     exit;
 }
-//initial bootstrap class for the confirmation message
+
 $class = 'd-none';
-//the GET method will show the info from the user to be deleted
+
+// ### Fetch user values from array ###
+
 if ($_GET['id']) {
     $id = $_GET['id'];
     $sql = "SELECT * FROM user WHERE id = {$id}";
@@ -27,7 +33,8 @@ if ($_GET['id']) {
     }
 }
 
-//the POST method will actually delete the user permanently
+// ### Delete user ###
+
 if ($_POST) {
     $id = $_POST['id'];
     $picture = $_POST['picture'];
@@ -50,6 +57,9 @@ $connect->close();
 <html lang="en">
 
 <head>
+
+    <!-- ### Add Bootstrap & own CSS file ### -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete User</title>
@@ -58,6 +68,9 @@ $connect->close();
 </head>
 
 <body>
+
+    <!-- ### Include header & navbar ### -->
+
     <?php include_once 'header.php' ?>
     <?php include_once 'navbar_adm.php' ?>
     <div class="container-fluid mx-auto pt-0 px-5">
@@ -68,6 +81,9 @@ $connect->close();
                         <div class="innerRimNav">
                             <div id="groundNav">
                                 <div id="borderMain">
+
+                                    <!-- ### Main content begins here ### -->
+
                                     <div class="container content">
                                         <div class="<?php echo $class; ?>" role="alert">
                                             <p><?php echo ($message) ?? ''; ?></p>
@@ -99,6 +115,9 @@ $connect->close();
             </div>
         </div>
     </div>
+
+    <!-- ### Include footer ### -->
+
     <?php include_once 'footer.php' ?>
 </body>
 

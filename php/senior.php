@@ -1,24 +1,26 @@
 <?php
+
+// ### Sessions ###
+
 session_start();
+
 require_once 'components/db_connect.php';
 
-// if adm will redirect to dashboard
 if (isset($_SESSION['adm'])) {
     header("Location: dashboard.php");
     exit;
 }
-// if session is not set this will redirect to login page
+
 if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     header("Location: index.php");
     exit;
 }
 
-// select logged-in users details - procedural style
 $res = mysqli_query($connect, "SELECT * FROM user WHERE id=" . $_SESSION['user']);
 $row = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
+// ### Add pet adoption record ###
 
-// add adoption
 if (isset($_POST['submit'])) {
     $userID = $_SESSION['user'];
     $petID = $_POST['id'];
@@ -27,13 +29,12 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $sql = "INSERT INTO adoptions (fk_petId, name, breed, fk_userId, image) VALUES ('$petID', '$name', '$breed', '$userID', '$image')";
     if ($connect->query($sql) === TRUE) {
-        header("Location: adoptions.php");
+        header("Location: senior.php");
     } else {
         $class = "danger";
         $message = "The adoption was not registered due to:" . $sql . "<br>" . $connect->error;
     };
 }
-
 
 // ### Selecting every senior pet that is not yet adopted ###
 
@@ -72,25 +73,20 @@ $connect->close();
 <html lang="en">
 
 <head>
+
+    <!-- ### Add Bootstrap & own CSS file ### -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome - <?php echo $row['first_name']; ?></title>
+    <title>Senior Pets</title>
     <?php require_once 'components/boot.php' ?>
     <link rel="stylesheet" type="text/css" href="../styles/styles.css">
-    <style>
-        .userImage {
-            width: 200px;
-            height: 200px;
-        }
-
-        .hero {
-            background: rgb(2, 0, 36);
-            background: linear-gradient(24deg, rgba(2, 0, 36, 1) 0%, rgba(0, 212, 255, 1) 100%);
-        }
-    </style>
 </head>
 
 <body>
+
+    <!-- ### Include header & navbar ### -->
+
     <?php include_once 'header.php' ?>
     <?php include_once 'navbar.php' ?>
     <div class="container-fluid mx-auto pt-0 px-5">
@@ -102,6 +98,9 @@ $connect->close();
                             <div id="groundNav">
                                 <div id="borderMain">
                                     <div>
+
+                                        <!-- ### Main content begins here ### -->
+
                                         <p class='h2'>Senior Pets</p>
                                         <table class='table table-striped bg-secondary'>
                                             <thead class='table-success'>
@@ -128,6 +127,9 @@ $connect->close();
             </div>
         </div>
     </div>
+
+    <!-- ### Include footer ### -->
+
     <?php include_once 'footer.php' ?>
 </body>
 

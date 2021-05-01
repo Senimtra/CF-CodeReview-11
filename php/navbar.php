@@ -13,6 +13,9 @@
                                                 <span class="navbar-toggler-icon"></span>
                                             </button>
                                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+                                                <!-- ### Navbar-links begin here ### -->
+
                                                 <div class="navbar-nav">
                                                     <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                                                     <a class="nav-link" href="senior.php">Seniors</a>

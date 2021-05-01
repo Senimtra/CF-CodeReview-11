@@ -1,5 +1,7 @@
 <?php
 
+// ### Sessions ###
+
 session_start();
 
 if (isset($_SESSION['user']) != "") {
@@ -13,6 +15,8 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
 }
 
 require_once '../components/db_connect.php';
+
+// ### Fetch id & image ###
 
 if ($_GET['id']) {
     $id = $_GET['id'];
@@ -35,6 +39,9 @@ if ($_GET['id']) {
 <html lang="en">
 
 <head>
+
+    <!-- ### Add Bootstrap & own CSS file ### -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Product</title>
@@ -43,6 +50,9 @@ if ($_GET['id']) {
 </head>
 
 <body>
+
+    <!-- ### Include header & navbar ### -->
+
     <?php include_once '../header.php' ?>
     <?php include_once 'navbar_adm_a.php' ?>
     <div class="container-fluid mx-auto pt-0 px-5">
@@ -53,6 +63,9 @@ if ($_GET['id']) {
                         <div class="innerRimNav">
                             <div id="groundNav">
                                 <div id="borderMain">
+
+                                    <!-- ### Main content begins here ### -->
+
                                     <div class="container content">
                                         <fieldset>
                                             <legend class='h2 mb-3'>Delete request <img src='<?php echo $image ?>' alt="<?php echo $name ?>"></legend>
@@ -80,6 +93,9 @@ if ($_GET['id']) {
             </div>
         </div>
     </div>
+
+    <!-- ### Include footer ### -->
+
     <?php include_once '../footer.php' ?>
 </body>
 

@@ -1,16 +1,21 @@
 <?php
+
+// ### Sessions ###
+
 session_start();
 require_once 'components/db_connect.php';
-// if session is not set this will redirect to login page
+
 if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     header("Location: index.php");
     exit;
 }
-//if session user exist it shouldn't access dashboard.php
+
 if (isset($_SESSION["user"])) {
     header("Location: home.php");
     exit;
 }
+
+// ### List all pet records from table ###
 
 $sql = "SELECT * FROM pets";
 $result = mysqli_query($connect, $sql);
@@ -40,15 +45,21 @@ $connect->close();
 <html lang="en">
 
 <head>
+
+    <!-- ### Add Bootstrap & own CSS file ### -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adm-DashBoard</title>
+    <title>DashBoard</title>
     <?php require_once 'components/boot.php' ?>
     <link rel="stylesheet" type="text/css" href="../styles/styles.css">
 
 </head>
 
 <body>
+
+    <!-- ### Include header & navbar ### -->
+
     <?php include_once 'header.php' ?>
     <?php include_once 'navbar_adm.php' ?>
     <div class="container-fluid mx-auto pt-0 px-5">
@@ -60,6 +71,9 @@ $connect->close();
                             <div id="groundNav">
                                 <div id="borderMain">
                                     <div>
+
+                                        <!-- ### Main content begins here ## -->
+
                                         <p class='h2'>Our Pets</p>
                                         <table class='table table-striped bg-secondary'>
                                             <thead class='table-success'>
@@ -86,6 +100,9 @@ $connect->close();
             </div>
         </div>
     </div>
+
+    <!-- ### Include footer ### -->
+
     <?php include_once 'footer.php' ?>
 </body>
 

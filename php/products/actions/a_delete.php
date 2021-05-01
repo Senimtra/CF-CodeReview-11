@@ -1,5 +1,7 @@
 <?php
 
+// ### Sessions ###
+
 session_start();
 
 if (isset($_SESSION['user']) != "") {
@@ -16,8 +18,8 @@ require_once '../../components/db_connect.php';
 
 if ($_POST) {
     $id = $_POST['id'];
-    // $image = $_POST['image'];
-    // ($image == "product.png") ?: unlink("../pictures/$image");
+
+    // ### Delete pet from table ###
 
     $sql = "DELETE FROM pets WHERE id = {$id}";
     if ($connect->query($sql) === TRUE) {
@@ -37,6 +39,9 @@ if ($_POST) {
 <html lang="en">
 
 <head>
+
+    <!-- ### Add Bootstrap & own CSS file ### -->
+
     <meta charset="UTF-8">
     <title>Delete</title>
     <?php require_once '../../components/boot.php' ?>
@@ -44,6 +49,9 @@ if ($_POST) {
 </head>
 
 <body>
+
+    <!-- ### Include header & navbar ### -->
+
     <?php include_once '../../header.php' ?>
     <?php include_once 'navbar_adm_b.php' ?>
     <div class="container-fluid mx-auto pt-0 px-5">
@@ -54,6 +62,9 @@ if ($_POST) {
                         <div class="innerRimNav">
                             <div id="groundNav">
                                 <div id="borderMain">
+
+                                    <!-- ### Main content begins here ### -->
+
                                     <div class="container content">
                                         <div class="mt-3 mb-3">
                                             <h1>Delete request response</h1>
@@ -71,6 +82,9 @@ if ($_POST) {
             </div>
         </div>
     </div>
+
+    <!-- ### Include footer ### -->
+
     <?php include_once '../../footer.php' ?>
 </body>
 
